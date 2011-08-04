@@ -159,6 +159,8 @@ class Request(object):
     
     def setup_self(self):
         self.path = add_slash(self._environ.get('PATH_INFO', ''))
+        self.script_name = self._environ.get('SCRIPT_NAME', '')
+        self.user = self._environ.get('REMOTE_USER', None)
         self.method = self._environ.get('REQUEST_METHOD', 'GET').upper()
         self.query = self._environ.get('QUERY_STRING', '')
         self.content_length = 0
